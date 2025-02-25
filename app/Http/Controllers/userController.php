@@ -105,7 +105,7 @@ class userController extends Controller
                 $query->where('name', 'like', "%$search%");
             }
 
-            $employees = $query->get();
+            $employees = $query->paginate(5);
 
             return view('userdashboard', compact('employees'));
         }

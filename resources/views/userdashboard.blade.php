@@ -20,8 +20,8 @@
         <div class="w-3/4 bg-white p-6 rounded-lg shadow-xl border border-gray-200">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-2xl font-bold text-gray-800">Employee List</h2>
-                <form class="flex items-center space-x-2">
-                    <input type="search" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search">
+                <form method="GET" action="{{ route('dashboard') }}" class="flex items-center space-x-2">
+                    <input type="search" name="search" value="{{ request()->search }}" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search">
                     <button type="submit" class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-500 transition">Search</button>
                 </form>
             </div>
@@ -51,6 +51,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-4">
+                {{ $employees->links() }}
+            </div>
         </div>
         
         <!-- Add Employee Form -->
