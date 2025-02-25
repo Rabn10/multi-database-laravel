@@ -8,10 +8,12 @@ use App\Models\Employee;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Traits\DatabaseConnectionTrait;
 
 
 class userController extends Controller
 {
+    use DatabaseConnectionTrait;
 
     //register page
     public function registerPage() {
@@ -110,18 +112,5 @@ class userController extends Controller
             return view('userdashboard', compact('employees'));
         }
         return redirect()->route('login');
-    }
-
-
-    //private function to get database connection
-    private function getDatabaseConnection($usercode){
-        $prefix = strtoupper(substr($usercode, 0, 1));
-
-        return match($prefix){
-            'A' => 'mysql',
-            'B' => 'mysql2',
-            'C' => 'mysql3'
-        };
-
     }
 }

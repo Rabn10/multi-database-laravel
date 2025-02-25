@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Traits\DatabaseConnectionTrait;
 
 class EmployeeController extends Controller
 {
 
+    use DatabaseConnectionTrait;
     //function to store employee data
     public function store(Request $request) {
         $request->validate([
@@ -67,16 +69,5 @@ class EmployeeController extends Controller
         $employee = Employee::on($dbConnection)->find($id);
         $employee->delete();
         return redirect()->back()->with('message', 'Employee Deleted Successfully');
-    }
-
-    private function getDatabaseConnection($usercode){
-        $prefix = strtoupper(substr($usercode, 0, 1));
-
-        return match($prefix){
-            'A' => 'mysql',
-            'B' => 'mysql2',
-            'C' => 'mysql3'
-        };
-
     }
 }
