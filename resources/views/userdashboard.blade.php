@@ -9,6 +9,14 @@
 <body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 relative">
     <!-- Logout Button -->
     <div class="flex items-center justify-end mb-8 ml-auto mr-36 space-x-4">
+        <div class="flex space-x-4" style="margin-right: 40rem">
+            <a href="{{ route('add_employee') }}" class="bg-green-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-500 transition">
+                Add Employee
+            </a>
+            <a href="{{ route('logout') }}" class="bg-green-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-500 transition">
+                Add Product
+            </a>
+        </div>
         <h3 class="text-lg font-semibold text-gray-800">Welcome, {{ session('username') }}</h3>
         <a href="{{ route('logout') }}" class="bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-500 transition">
             Logout
@@ -17,7 +25,7 @@
     
     <div class="flex space-x-8 w-4/5">
         <!-- Employee List -->
-        <div class="w-3/4 bg-white p-6 rounded-lg shadow-xl border border-gray-200">
+        <div class="w-full bg-white p-6 rounded-lg shadow-xl border border-gray-200">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-2xl font-bold text-gray-800">Employee List</h2>
                 <form method="GET" action="{{ route('dashboard') }}" class="flex items-center space-x-2">
@@ -54,38 +62,6 @@
             <div class="mt-4">
                 {{ $employees->links() }}
             </div>
-        </div>
-        
-        <!-- Add Employee Form -->
-        <div class="w-1/2 bg-white p-8 rounded-lg shadow-xl border border-gray-200">
-            <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Add Employee</h1>
-            <form method="POST" action="{{ url('store') }}">
-                @csrf
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium" for="name">Name</label>
-                    <input type="text" name="name" id="name" value="{{ old('name') }}" required
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium" for="email">Email</label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" required
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium" for="address">Address</label>
-                    <input type="text" name="address" id="address" required
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium" for="phone">Phone number</label>
-                    <input type="text" name="phone" id="phone" required
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <div class="flex justify-center">
-                    <button type="submit"
-                        class="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-500 transition">ADD</button>
-                </div>
-            </form>
         </div>
     </div>
 </body>

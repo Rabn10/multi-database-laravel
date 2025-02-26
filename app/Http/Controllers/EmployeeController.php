@@ -10,6 +10,12 @@ class EmployeeController extends Controller
 {
 
     use DatabaseConnectionTrait;
+
+    public function addPage(Request $request) {
+        return view('add_page');
+    }
+
+
     //function to store employee data
     public function store(Request $request) {
         $request->validate([
@@ -29,7 +35,7 @@ class EmployeeController extends Controller
             'address' => $request->address
         ]);
 
-        return redirect()->back()->with('message', 'Employee Created Successfully');
+        return redirect('/dashboard')->with('message', 'Employee Created Successfully');
     }
 
     //function to get one employee data
@@ -51,7 +57,13 @@ class EmployeeController extends Controller
             'address' => 'required'
         ]);
 
-        $employee = Employee::find($id);
+        $usercode = session('usercode');
+        $dbConnection = $this->getDatabaseConnection($usercode);
+
+
+
+        // $employee = Employee::find($id);
+        $employee = Employee::on($dbConnection)->find($id);
         $employee->name = $request->name;
         $employee->email = $request->email;
         $employee->phone = $request->phone;

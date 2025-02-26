@@ -19,6 +19,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 //dashboard routes
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+Route::get('/add_employee', [EmployeeController::class, 'addPage'])->name('add_employee');
 Route::get('/edit/{id}', [EmployeeController::class, 'getOneEmployee'])->name('edit');
 Route::post('/update/{id}', [EmployeeController::class, 'updateEmployee'])->name('update');
 Route::post('/store', [EmployeeController::class, 'store']);
