@@ -13,7 +13,7 @@
             <a href="{{ route('add_employee') }}" class="bg-green-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-500 transition">
                 Add Employee
             </a>
-            <a href="{{ route('logout') }}" class="bg-green-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-500 transition">
+            <a href="{{ route('add_product') }}" class="bg-green-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-500 transition">
                 Add Product
             </a>
         </div>

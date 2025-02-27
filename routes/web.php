@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,5 +25,10 @@ Route::get('/edit/{id}', [EmployeeController::class, 'getOneEmployee'])->name('e
 Route::post('/update/{id}', [EmployeeController::class, 'updateEmployee'])->name('update');
 Route::post('/store', [EmployeeController::class, 'store']);
 Route::get('/delete_employee/{id}', [EmployeeController::class, 'deleteEmployee']);
+
+
+//products routes
+Route::get('/product', [ProductController::class, 'index'])->name('add_product');
+Route::post('/product', [ProductController::class, 'store']);
 
 
